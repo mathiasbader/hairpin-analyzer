@@ -246,17 +246,3 @@ else:
     print_line("")
     print line_software_outline
     print
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
