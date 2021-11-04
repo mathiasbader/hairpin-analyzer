@@ -1,4 +1,4 @@
-# Hairpin Analyzer - How-to
+# How to
 The Hairpin Analyzer is a python based script which takes the output files of the [BiQ Analyzer HT](http://biq-analyzer.bioinf.mpi-inf.mpg.de) and restores the double strand information. To run HairpinAnalyzer, the user has to install python and provide the following output folders of BiQHT:
 
 CpGs – mandatory!!!

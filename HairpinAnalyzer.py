@@ -7,11 +7,12 @@
 # --                                               --
 # --  Developed during 2011-Aug-01 to 2011-Aug-23  --
 # --  by Mathias Bader (mail@mathiasbader.de)      --
-# --  Universitaet des Saarlandes                  --
+# --  at Saarland University                       --
 # ---------------------------------------------------
 #
 
-import os, imp, sys
+import imp
+import sys
 from glob import glob
 from time import localtime, strftime
 
@@ -27,10 +28,11 @@ line_software_inf     = "--              Hairpin Analyzer v" + Specification.sof
 for i in range(24 - len(Specification.software_version)):
     line_software_inf += " "
 line_software_inf += "--"
-print
-print line_software_outline
-print line_software_inf
-print line_software_outline
+print()
+print(line_software_outline)
+print(line_software_inf)
+print(line_software_outline)
+
 
 # function to print a line to stdout with boxed style
 def print_line(line):
@@ -45,34 +47,31 @@ def print_line(line):
 print_line("                                            " + strftime("%H:%M:%S", localtime()))
 
 # import configuration
-import imp
 Configuration = imp.load_source('Configuration', 'configuration/configuration.py')
-filename_datafile    = Configuration.filename_results
-filename_summaryfile = Configuration.filename_results_summary
+filename_data_file = Configuration.filename_results
+filename_summary_file = Configuration.filename_results_summary
 main_folder = Configuration.data_path_main_folder
-
-
 
 # search for files that contain data for hairpin
 path_to_data = main_folder + Configuration.data_path_cpg
-filelist = glob(path_to_data + "*/*/" + filename_datafile)
+filelist = glob(path_to_data + "*/*/" + filename_data_file)
 
 
 # if no files were found in the specified folder
-if (len(filelist) == 0):
-    print line_software_outline
+if len(filelist) == 0:
+    print(line_software_outline)
     print_line("Couldn't find any data in the specified data folder.")
     print_line("Please open the file configuration/configuration.py")
     print_line("to specify the data path.")
-    print line_software_empty
+    print(line_software_empty)
     print_line("The folder you specified is as follows:")
     print_line(path_to_data)
-    print line_software_empty
-    print line_software_outline
-    print
+    print(line_software_empty)
+    print(line_software_outline)
+    print()
 else:
     # calculate and output progress bar length
-    prog_bar_len = 44
+    progress_bar_length = 44
     if len(filelist) == 1:
         print_line("One file found in ")
         print_line(path_to_data)
@@ -82,17 +81,16 @@ else:
     print_line("")
     sys.stdout.write("--  0%|")
     sys.stdout.flush()
-    prog_bar_piece_len = prog_bar_len / len(filelist)
-    prog_bar_piece = ""
-    for i in range(prog_bar_piece_len):
-        prog_bar_piece += "-"
-    
-    # figure out whether slashes or backslashes are used (Windows <-> Unix)
-    seperator = "\\"	 # windows system
-    if (filelist[0].find(seperator) == -1):
-        seperator = "/"  # unix system
+    progress_bar_piece_length: int = progress_bar_length // len(filelist)
+    progress_bar_piece = ""
+    for i in range(progress_bar_piece_length):
+        progress_bar_piece += "-"
 
-    # sort the filelist alphabetically
+    # figure out whether slashes or backslashes are used (Windows <-> Unix)
+    separator = "\\"	 # windows
+    if filelist[0].find(separator) == -1:
+        separator = "/"  # unix
+
     filelist.sort()
 
     # figure out longest filename for alignment of output to stdout
@@ -104,13 +102,13 @@ else:
     # dictionary for collecting summary information
     # seperatly for each amplicon type
     summary_info = {}
-    
+
     cur_file_count = 0
     processed_file_list = []
     for filepath in filelist:
         cur_file_count += 1
-        folders = filepath[len(path_to_data):len(filepath)-len(filename_datafile)-1]
-        folders = folders.split(seperator)
+        folders = filepath[len(path_to_data):len(filepath) - len(filename_data_file) - 1]
+        folders = folders.split(separator)
         sub_path = folders[0] + "/" + folders[1] + "/"
 
         # ----------------------------------------------------------
@@ -149,7 +147,7 @@ else:
         for i in range(max_filename_length - len(filepath)):
             new_line += " "
 
-        if (hp.result_row_count == 0):
+        if hp.result_row_count == 0:
             # there are no lines in this file
             new_line += " [no matching ids]"
         else:
@@ -179,10 +177,10 @@ else:
                 if (linker_match[3] < 1000):
                     new_line += " "
                 new_line += str(linker_match[3])
-            
+
             # print the results to std out (out-comment the following line if necessary)
             #hp.print_results()
-            
+
             # write results to textfile
             hp.write_results_to_file('results/' + folders[0] + '_' + folders[1] + '_results.txt')
 
@@ -204,34 +202,33 @@ else:
         del(hp)
 
         # print the progressbar
-        sys.stdout.write(prog_bar_piece)
-        if (cur_file_count <= prog_bar_len % len(filelist)):
+        sys.stdout.write(progress_bar_piece)
+        if cur_file_count <= progress_bar_length % len(filelist):
             sys.stdout.write("-")
         sys.stdout.flush()
         processed_file_list.append(new_line)
-        
+
     # write a summary file for each amplicon type
-    summary_filename       = Configuration.results_summary_filename
+    summary_filename = Configuration.results_summary_filename
     summary_file_extension = Configuration.results_summary_file_extension
     for amplicon in summary_info:
         results_summary_filename = "results/" + summary_filename + amplicon + summary_file_extension
         try:
             file_summary = open(results_summary_filename, 'w')
         except IOError as e:
-            print 
+            print()
             print_line("Error: Can't write to file '" + results_summary_filename + "")
-            assert(False)
+            assert False
 
         # write summary information to file
         for line in summary_info[amplicon]:
             file_summary.write(line)
         file_summary.close()
-    
 
     # output final information to stdout
-    print "|100%  --"
+    print("|100%  --")
     print_line("")
-    print_line("The file " + filename_datafile)
+    print_line("The file " + filename_data_file)
     print_line("has been analyzed in the following folders:")
     print_line("")
     print_line("            (data <-> linker) matched lines")
@@ -244,5 +241,5 @@ else:
     print_line("")
     print_line("Results have been written to the folder 'results/'")
     print_line("")
-    print line_software_outline
-    print
+    print(line_software_outline)
+    print()

@@ -7,7 +7,7 @@
 # --                                               --
 # --  2011-Aug-01 to 2011-Aug-23                   --
 # --  by Mathias Bader (mail@mathiasbader.de)      --
-# --  Universitaet des Saarlandes                  --
+# --  at Saarland University                       --
 # ---------------------------------------------------
 # 
 
@@ -21,10 +21,11 @@
 
 
 import unittest
-       
+
 
 # import classes, configuration and specification
 import imp
+
 HairpinClasses = imp.load_source('HairpinData', 'HairpinClasses.py')
 Configuration = imp.load_source('Configuration', '../configuration/configuration.py')
 Specification = imp.load_source('Specification', 'HairpinSpec.py')
@@ -35,20 +36,22 @@ line_software_inf_2 = "   Test Suite"
 line_software_outline = ""
 for i in range(len(line_software_inf_1)):
     line_software_outline += "-"
-print
-print line_software_outline
-print line_software_inf_1
-print line_software_inf_2
-print line_software_outline
-print
+print()
+print(line_software_outline)
+print(line_software_inf_1)
+print(line_software_inf_2)
+print(line_software_outline)
+print()
 
 
 class HairpinTestCase(unittest.TestCase):
     """Superclass of Test cases for Hairpin Analyzer"""
     def setUp(self):
         pass
+
     def tearDown(self):
         pass
+
 
 class TestMapHairpinPositions(HairpinTestCase):
     """Test cases for map_hairpin_positions()"""
@@ -57,24 +60,28 @@ class TestMapHairpinPositions(HairpinTestCase):
                       ("11101x", "641"),
                       ("xxx01x", "985"),
                       ("100001", "400"),
-                      ("0000",   "00"),
+                      ("0000", "00"),
                       ("101010", "131"),
                       ("010101", "313")
-                     ]
-    
+                      ]
+
     def test_even_input_count(self):
         """even position count should abort"""
         self.assertRaises(HairpinClasses.InvalidInputException, HairpinClasses.HairpinFunctionality.map_hairpin_positions, ("0011xx0x1"))
+
     def test_invalid_input_char(self):
         """invalid characters should abort"""
         self.assertRaises(HairpinClasses.InvalidInputException, HairpinClasses.HairpinFunctionality.map_hairpin_positions, ("0041xx0x"))
+
     def test_empty_input(self):
         """empty string should abort"""
         self.assertRaises(HairpinClasses.InvalidInputException, HairpinClasses.HairpinFunctionality.map_hairpin_positions, (""))
+
     def test_correct_mapping_examples(self):
         """try example mappings"""
         for x in self.valid_mappings:
             self.assertEqual(HairpinClasses.HairpinFunctionality.map_hairpin_positions(x[0]), x[1])
+
 
 class TestDefineStructure(HairpinTestCase):
     """Test cases for define_structure()"""
@@ -122,16 +129,17 @@ class TestDefineStructure(HairpinTestCase):
                         ("41100", "continuous"),
                         ("01433", "continuous")
                        ]
+
     def test_define_structures(self):
         """test for definition of structures"""
         for x in self.known_structures:
             self.assertEqual(HairpinClasses.HairpinFunctionality.define_structure(x[0]), x[1])
 
+
 # build the unit test suite
 suite1 = unittest.TestLoader().loadTestsFromTestCase(TestMapHairpinPositions)
 suite2 = unittest.TestLoader().loadTestsFromTestCase(TestDefineStructure)
-alltests = unittest.TestSuite((suite1, suite2))
+all_tests = unittest.TestSuite((suite1, suite2))
 
 # run the unit test suite
-unittest.TextTestRunner(verbosity=2).run(alltests)
-
+unittest.TextTestRunner(verbosity=2).run(all_tests)

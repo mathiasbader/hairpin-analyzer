@@ -7,7 +7,7 @@
 # --                                               --
 # --  2011-Aug-10 to 2011-Aug-23                   --
 # --  by Mathias Bader (mail@mathiasbader.de)      --
-# --  Universitaet des Saarlandes                  --
+# --  at Saarland University                       --
 # ---------------------------------------------------
 # 
 
