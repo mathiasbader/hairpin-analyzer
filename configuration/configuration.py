@@ -94,16 +94,16 @@ color_mutated = "white"             # color for mutated state on either side or 
 # center position should be removed:
 remove_middle_position = [
     'l1',
-	'mmetnhp',
+    'mmetnhp',
     'b1',
     'igf2',
     'afp',
-	'Oasl1HP',
-	'tdg8',
-	'tdg9',
-	'tdg39',
-	'tdg49',
-	'tdg54'
+    'Oasl1HP',
+    'tdg8',
+    'tdg9',
+    'tdg39',
+    'tdg49',
+    'tdg54'
 ]
 # In the following list, you can define for an amplicon positions that should be removed
 remove_special_positions = [
@@ -111,8 +111,8 @@ remove_special_positions = [
     ('msat', [1]),
     ('oct4', [9]),
     ('msatub', [9,10]),
-	('iapneu', [1,2]),
-	('tdg36',[9,16])
+    ('iapneu', [1,2]),
+    ('tdg36',[9,16])
 ]
 
 
@@ -123,7 +123,7 @@ remove_special_positions = [
 delete_mapped_columns = [
     ('iap', [1,2,3,4]),
     ('b1',  [1]),
-	('l1', [6,7]),
+    ('l1', [6,7]),
     ('iapez', [1,2,3,4]),
     ('snrpn', [1,2,3]) # wenn sequenzen zu kurz
 ]

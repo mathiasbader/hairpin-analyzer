@@ -87,7 +87,7 @@ else:
         progress_bar_piece += "-"
 
     # figure out whether slashes or backslashes are used (Windows <-> Unix)
-    separator = "\\"	 # windows
+    separator = "\\"    # windows
     if filelist[0].find(separator) == -1:
         separator = "/"  # unix
 

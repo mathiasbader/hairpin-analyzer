@@ -59,7 +59,7 @@ The mapped CpG methylation pattern. The Hairpin Analyzer takes the column CG_Met
 9 - both sides are mutated (xx)
 ```
 
-### Conversion Read	
+### Conversion Read
 The column "Conversion" copied from the CpG data file
 
 ### Conversion Linker

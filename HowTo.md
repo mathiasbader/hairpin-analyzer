@@ -28,7 +28,7 @@ data_path_main_folder = /home/Data/BiQHToutputProjectXY/
 3. Save and close the configuration file.
 4. Open command line and access the HairpinAnalyzer folder:
 
-	Example:
+Example:
 ```
 cd tools/HairpinAnalyzer
 ```
