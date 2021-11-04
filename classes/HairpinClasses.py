@@ -1016,7 +1016,7 @@ class HairpinData:
         box = (x2 + 1, 0, first_column_width - 1, image_file_dim[1])
         draw.rectangle(box, fill=color_background)
 
-        if configuration.heatmap_column_seperator_transparent:
+        if configuration.heatmap_column_separator_transparent:
             # make box between first column and data transparent
             mask=Image.new('L', image_file_dim, color=255)
             draw=ImageDraw.Draw(mask)

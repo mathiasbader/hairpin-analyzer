@@ -1,24 +1,25 @@
 # How to
 The Hairpin Analyzer is a python based script which takes the output files of the [BiQ Analyzer HT](http://biq-analyzer.bioinf.mpi-inf.mpg.de) and restores the double strand information. To run HairpinAnalyzer, the user has to install python and provide the following output folders of BiQHT:
 
-CpGs – mandatory!!!
+**Mandatory folder:**
+* `CpGs`
 
-nonCpGs – optional (provides nonCpG methylation data)
-Conversion – optional (provides conversion rate of cytosine)
-SNPs – optional (outputs the base at a given SNP)
+**Optional folders:**
+* `nonCpGs`    provides nonCpG methylation data
+* `Conversion` provides conversion rate of cytosine
+* `SNPs`       outputs the base at a given SNP
 
-A detailed description, on how the individual folders are generated, can be found
-in Giehr at al. 2018. Make sure that all folders are stored in one main folder:
+A detailed description, on how the individual folders are generated, can be found in *Giehr at al. 2018*. Make sure that all folders are stored in one main folder:
 
-    (BiQHToutputProjectXY/CpGs)
-    (BiQHToutputProjectXY/nonCpGs)
-    (BiQHToutputProjectXY/Conversion)
-    (BiQHToutputProjectXY/SNPs)
+    BiQHToutputProjectXY/CpGs
+    BiQHToutputProjectXY/nonCpGs
+    BiQHToutputProjectXY/Conversion
+    BiQHToutputProjectXY/SNPs
 
 We recommend using the given folder names to minimize the adjustments on the configuration file `configuration.py`.
 
-1. Copy the folder HairpinAnlyzer to the desired location
-2. Open configuration.py. Go to the section `Additional data paths` and give the path to the main folder under the point `data_path_main_folder = `
+1. Copy the folder HairpinAnalyzer to the desired location
+2. Open `configuration.py`. Go to the section `Additional data paths` and give the path to the main folder under the point `data_path_main_folder = `
    
     Example:
 ```
@@ -29,7 +30,7 @@ data_path_main_folder = /home/Data/BiQHToutputProjectXY/
 
 	Example:
 ```
-cd.../tools/HairpinAnalyzer
+cd tools/HairpinAnalyzer
 ```
 
 5. Run HairpinAnalyzer:

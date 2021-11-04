@@ -30,12 +30,12 @@ data_path_cpg = "CpGs/"
 
 # Additional data paths
 # ---------------------
-# Specify were additional data for analysis is located
-# (linker, non_cpg and SNP):
-data_paths_additional = []
-data_paths_additional.append(["linker",  "Conversion/"])
-data_paths_additional.append(["non_cpg", "nonCpGs/"])
-data_paths_additional.append(["snp",     "SNPs/"])
+# Specify were additional data for analysis is located (linker, non_cpg and SNP):
+data_paths_additional = [
+    ["linker", "Conversion/"],
+    ["non_cpg", "nonCpGs/"],
+    ["snp", "SNPs/"]
+]
 # specify a top folder which will be used for all folders
 # specified above
 data_path_main_folder = "/media/data2TB/Ablage/userData/pascal/MiSeq_Data/BQ-Results/14.02.19_IAP-OxBis/"
@@ -65,24 +65,22 @@ results_summary_file_extension = ".txt"
 heatmap_image_size = (220, 367)
 # Define whether the are between the leftmost column in the
 # heatmap and the other columns should be transparent or not
-heatmap_column_seperator_transparent = True
+heatmap_column_separator_transparent = True
 # All colors used for the heatmap are defined here
 color_frame = "#dddddd"             # color between CpG site columns
 color_background = "white"          # color between leftmost column and other columns (if not transparent)
 color_frame_left_column = "#444444" # color of the frame around and the lines in the leftmost column
-color_unmethylated     = "#00ccff"  # color for unmethylated state on both sides
-#if primer are designed 3'from restriction side
-color_methylated_left  = "#76cc2f"  # color for methylation only on left side, 
+color_unmethylated = "#00ccff"  # color for unmethylated state on both sides
+# if primer are designed 3'from restriction side
+color_methylated_left  = "#76cc2f"  # color for methylation only on left side,
 color_methylated_right = "#B9E6B8"  # color for methylation only on right side, 
-#if primer are designed 5' from restriction side
+# if primer are designed 5' from restriction side
 #color_methylated_left  = "#B9E6B8"  # color for methylation only on left side
 #color_methylated_right = "#76cc2f"  # color for methylation only on right side
 
 color_methylated_both  = "#ff6600"  # color for methylation on both sides
 color_mutated = "white"             # color for mutated state on either side or both
 # for changing the colors, I recommend the following tool: http://www.colorpicker.com
-
-
 
 
 # Deleting CpG positions before mapping
@@ -94,40 +92,41 @@ color_mutated = "white"             # color for mutated state on either side or 
 #
 # All amplicons with odd position count, where the
 # center position should be removed:
-remove_middle_position = ['l1',
-				'mmetnhp',
-                          'b1',
-                          'igf2',
-                          'afp',
-				'Oasl1HP',
-				'tdg8',
-				'tdg9',
-				'tdg39',
-				'tdg49',
-				'tdg54'
-                         ]
-# In the following list, you can define for an amplicon
-# positions that should be removed
-remove_special_positions = [('ysat', [1]),
-                            ('msat', [1]),
-                            ('oct4', [9]),
-                            ('msatub', [9,10]),
-			    ('iapneu', [1,2]),
-				('tdg36',[9,16])
-                         ]
+remove_middle_position = [
+    'l1',
+	'mmetnhp',
+    'b1',
+    'igf2',
+    'afp',
+	'Oasl1HP',
+	'tdg8',
+	'tdg9',
+	'tdg39',
+	'tdg49',
+	'tdg54'
+]
+# In the following list, you can define for an amplicon positions that should be removed
+remove_special_positions = [
+    ('ysat', [1]),
+    ('msat', [1]),
+    ('oct4', [9]),
+    ('msatub', [9,10]),
+	('iapneu', [1,2]),
+	('tdg36',[9,16])
+]
 
 
 # Deleting columns from heatmap
 # -----------------------------
 # Define for each amplicon, which mapped columns should be
 # removed before creating the heatmap
-delete_mapped_columns = [('iap', [1,2,3,4]),
-                         ('b1',  [1]),
-			 ('l1', [6,7]),	
-                         ('iapez', [1,2,3,4]),
-                         ('snrpn', [1,2,3]) #wenn sequenzen zu kurz
-                        ]
-
+delete_mapped_columns = [
+    ('iap', [1,2,3,4]),
+    ('b1',  [1]),
+	('l1', [6,7]),
+    ('iapez', [1,2,3,4]),
+    ('snrpn', [1,2,3]) # wenn sequenzen zu kurz
+]
 
 
 # Rounding results which are percentages
@@ -140,6 +139,3 @@ delete_mapped_columns = [('iap', [1,2,3,4]),
 # x=2 gives 0.44). Percentages are always given as numbers
 # between 0 and 1.
 digits_after_decimal_point_for_percentages = 4
-
-
-
