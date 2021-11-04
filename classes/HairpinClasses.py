@@ -1231,8 +1231,6 @@ class HairpinData:
         return line
 
 
-
-
     def get_linker_mean_methylation_level(self):
         """Reads the mean methylation level from the linkers summary.dat file"""
 
@@ -1283,7 +1281,7 @@ class HairpinFunctionality:
         if len(data) != (data.count("0") + data.count("1") + data.count("x")): raise InvalidInputException()
 
         # calculate mapped string
-        half_length = len(data) / 2
+        half_length = len(data) // 2
         left_side = data[0:half_length]
         right_side = data[half_length:len(data)]
         right_side = right_side[::-1]   # reverse order of string
