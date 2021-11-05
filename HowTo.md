@@ -23,7 +23,7 @@ We recommend using the given folder names to minimize the adjustments on the con
    
     Example:
 ```
-data_path_main_folder = /home/Data/BiQHToutputProjectXY/
+data_path_main_folder = /data/BiQHToutputProjectXY/
 ```
 3. Save and close the configuration file.
 4. Open command line and access the HairpinAnalyzer folder:
@@ -67,6 +67,6 @@ NN-CG-NN-CG-NN-NN-Linker-NN-NN-CG-NN-CG-NN
 
 delete_mapped_columns = [(‘name amplicon example 3’, [1]), (‘name amplicon example 4’, [2])]
 ```
-Example 3: removes the first !CpG dyad! from the Analysis, meaning CpG 1 and CpG 4
+Example 3: Removes the first `!CpG dyad!` from the Analysis, meaning `CpG 1` and `CpG 4`
 
-Example 4: removes the first !CpG dyad! from the Analysis, meaning CpG 2 and CpG 3
+Example 4: Removes the first `!CpG dyad!` from the Analysis, meaning `CpG 2` and `CpG 3`

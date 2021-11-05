@@ -38,7 +38,7 @@ print(line_software_outline)
 def print_line(line):
     sys.stdout.write("--  ")
     sys.stdout.write(line)
-    for i in range(52-len(line)):
+    for i in range(52 - len(line)):
         sys.stdout.write(" ")
     sys.stdout.write("  --\n")
     sys.stdout.flush()
@@ -54,11 +54,11 @@ main_folder = Configuration.data_path_main_folder
 
 # search for files that contain data for hairpin
 path_to_data = main_folder + Configuration.data_path_cpg
-filelist = glob(path_to_data + "*/*/" + filename_data_file)
+file_list = glob(path_to_data + "*/*/" + filename_data_file)
 
 
 # if no files were found in the specified folder
-if len(filelist) == 0:
+if len(file_list) == 0:
     print(line_software_outline)
     print_line("Couldn't find any data in the specified data folder.")
     print_line("Please open the file configuration/configuration.py")
@@ -72,30 +72,30 @@ if len(filelist) == 0:
 else:
     # calculate and output progress bar length
     progress_bar_length = 44
-    if len(filelist) == 1:
+    if len(file_list) == 1:
         print_line("One file found in ")
         print_line(path_to_data)
     else:
-        print_line(str(len(filelist)) + " files found in")
+        print_line(str(len(file_list)) + " files found in")
         print_line(path_to_data)
     print_line("")
     sys.stdout.write("--  0%|")
     sys.stdout.flush()
-    progress_bar_piece_length: int = progress_bar_length // len(filelist)
+    progress_bar_piece_length: int = progress_bar_length // len(file_list)
     progress_bar_piece = ""
     for i in range(progress_bar_piece_length):
         progress_bar_piece += "-"
 
     # figure out whether slashes or backslashes are used (Windows <-> Unix)
     separator = "\\"    # windows
-    if filelist[0].find(separator) == -1:
+    if file_list[0].find(separator) == -1:
         separator = "/"  # unix
 
-    filelist.sort()
+    file_list.sort()
 
     # figure out longest filename for alignment of output to stdout
     max_filename_length = 0
-    for filename in filelist:
+    for filename in file_list:
         if len(filename) > max_filename_length:
             max_filename_length = len(filename)
 
@@ -105,7 +105,7 @@ else:
 
     cur_file_count = 0
     processed_file_list = []
-    for filepath in filelist:
+    for filepath in file_list:
         cur_file_count += 1
         folders = filepath[len(path_to_data):len(filepath) - len(filename_data_file) - 1]
         folders = folders.split(separator)
@@ -203,7 +203,7 @@ else:
 
         # print the progressbar
         sys.stdout.write(progress_bar_piece)
-        if cur_file_count <= progress_bar_length % len(filelist):
+        if cur_file_count <= progress_bar_length % len(file_list):
             sys.stdout.write("-")
         sys.stdout.flush()
         processed_file_list.append(new_line)

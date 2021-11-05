@@ -38,7 +38,7 @@ data_paths_additional = [
 ]
 # specify a top folder which will be used for all folders
 # specified above
-data_path_main_folder = "/media/data2TB/Ablage/userData/pascal/MiSeq_Data/BQ-Results/14.02.19_IAP-OxBis/"
+data_path_main_folder = "data/current/"
 
 
 # File names
@@ -54,7 +54,7 @@ filename_results_summary = "summary.dat"
 # name of the file that should be created containing the
 # summary for each amplicon type. The amplicon type will
 # be added between filename and file extension
-results_summary_filename       = "achieved_results_"
+results_summary_filename = "achieved_results_"
 results_summary_file_extension = ".txt"
 
 # Heatmap
@@ -72,7 +72,7 @@ color_background = "white"          # color between leftmost column and other co
 color_frame_left_column = "#444444" # color of the frame around and the lines in the leftmost column
 color_unmethylated = "#00ccff"  # color for unmethylated state on both sides
 # if primer are designed 3'from restriction side
-color_methylated_left  = "#76cc2f"  # color for methylation only on left side,
+color_methylated_left = "#76cc2f"  # color for methylation only on left side,
 color_methylated_right = "#B9E6B8"  # color for methylation only on right side, 
 # if primer are designed 5' from restriction side
 #color_methylated_left  = "#B9E6B8"  # color for methylation only on left side
