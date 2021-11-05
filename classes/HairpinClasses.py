@@ -868,16 +868,16 @@ class HairpinData:
         # the dimensions of the final image file in pixels
         image_file_dim = configuration.heatmap_image_size
 
-        import Image
-        import ImageDraw
+        from PIL import Image
+        from PIL import ImageDraw
 
         def get_column_width(image_width, column_count, column_number):
-            left_column_width = image_width / 5
+            left_column_width = image_width // 5
             if column_number == 0:
                 return left_column_width
             data_width = image_width - left_column_width
             data_width_plain = data_width - (column_count - 1)
-            column_width = data_width_plain / column_count
+            column_width = data_width_plain // column_count
             if data_width_plain % column_count >= column_number:
                 column_width += 1
             return column_width
@@ -947,7 +947,7 @@ class HairpinData:
 
         # for each column
         first_column_width = get_column_width(image_file_dim[0], data_dim[0], 0)
-        first_column_distance = first_column_width / 4   # distance between first column and data
+        first_column_distance = first_column_width // 4   # distance between first column and data
         col_position = first_column_width
         for i in range(data_dim[0]):
             # scale the column such that it fits into the final image
