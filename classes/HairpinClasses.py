@@ -338,7 +338,7 @@ class HairpinData:
                 # append results to results set
                 self.results.append([result, full_line])
 
-        self.mapped_col_count /= 2
+        self.mapped_col_count //= 2
         self.results_unsorted = self.results
         self.result_row_count = len(self.results)
 
@@ -445,7 +445,7 @@ class HairpinData:
                             # fold the list in the middle and map positions on to each other
                             mapping_correct   = 0
                             mapping_incorrect = 0
-                            for i in range(len(snp_positions)/2):
+                            for i in range(len(snp_positions) // 2):
                                 l = snp_positions[i]
                                 r = snp_positions[len(snp_positions)-i-1]
                                 # ignore positions with mutations
@@ -675,7 +675,6 @@ class HairpinData:
                     pass
 
         return None
-
 
     def sort_results(self):
         """Sort the result rows by a specially defined order"""
