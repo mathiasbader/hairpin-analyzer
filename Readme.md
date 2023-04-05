@@ -1,5 +1,5 @@
 # Hairpin Analyzer
-*by Mathias Bader (mail@mathiasbader.de)*
+*by [Mathias Bader](mail@mathiasbader.de)*
 
 ## Project summary
 The gold standard when analysing DNA methylation is bisulfite sequencing. Genomic DNA is treated with sodium bisulfite which causes the conversion of cytosine to uracil, whereas 5-methyl cytosine (5mC) remains unchanged. After subsequent PCR and sequencing cytosine will be represented as thymine and 5mC as cytosine. The comparison to the genomic reference sequence then allows to determine the level of 5mC at a given CpG position. However, conversion of cytosine requires denaturation of DNA, resulting in the separation of Watson and Crick strand. Therefore, it is only possible to preserve the information of one DNA strand in subsequent PCR and sequencing. To overcome this limitation Laird et al. developed Hairpin Bisulfite Sequencing. During the course of this technique, the DNA is fragmented using restriction enzymes followed by covalent connection of Watson and Crick strand by ligation of a short hairpin oligo nucleotide, preventing the physical separation of both DNA strands during bisulfite treatment.
